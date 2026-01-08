@@ -4,19 +4,19 @@ Chiedere all’utente di inserire una parola
 Creare una funzione per capire se la parola inserita è palindroma
 */
 
-function verifyPal(uWord) {
-  //Primo approccio
+function verifyPal(uWord, buf, i) {
+  //!Primo approccio
   //   let tmpW = uWord.split("").reverse().join("");
   //   return tmpW === uWord;
   //
-  //secondo approccio
+  //!secondo approccio
   //   const tmpW = [];
   //   for (let i = 0; i < uWord.length; i++) {
   //     tmpW[i] = uWord[uWord.length - (i + 1)];
   //   }
   //   return uWord === tmpW.join("");
   //
-  //un altro approccio
+  //!un altro approccio
   //   const lenW = uWord.trim().length / 2;
   //   for (let i = 0; i < lenW; i++) {
   //     if (uWord[i] != uWord[uWord.length - (i + 1)]) {
@@ -25,18 +25,28 @@ function verifyPal(uWord) {
   //   }
   //   return true;
   //
-  //un altro modo?
+  //!un altro modo?
+  //   const tmpW = [];
+  //   for (let i = 0; i < uWord.length; i++) {
+  //     tmpW.unshift(uWord[i]);
+  //   }
+  //   return tmpW.join("") === uWord;
+  //
+  //
+  //!un altro ancora?
+  //!ricorsione?
 
-  const tmpW = [];
-  for (let i = 0; i < uWord.length; i++) {
-    tmpW.unshift(uWord[i]);
+  if (i < 0) {
+    return buf === uWord;
+  } else {
+    buf += uWord[i];
+    return verifyPal(uWord, buf, i - 1);
   }
-
-  return tmpW.join("") === uWord;
 }
 
+const buf = "";
 const userWord = "AnnA" || prompt("Inserisci la parola da verificare!").trim();
-const verifyUserWord = verifyPal(userWord);
+const verifyUserWord = verifyPal(userWord, buf, userWord.length - 1);
 
 const message = verifyUserWord
   ? "La parola inserita è palindroma!"
