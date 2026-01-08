@@ -7,16 +7,34 @@ Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto.
 */
 
-let userChoice = prompt("Scegli tra pari o dispari!")
-  .trim()
-  .toLocaleLowerCase();
-//ciclo finchè non inserisco pari o dispari
-while (userChoice != "pari" && userChoice != "dispari") {
-  userChoice = prompt("Scegli tra pari o dispari!").trim().toLocaleLowerCase();
+function pariOdispari() {
+  let tmpChoice = prompt("Scegli tra pari o dispari!")
+    .trim()
+    .toLocaleLowerCase();
+  //ciclo finchè non inserisco pari o dispari
+  while (tmpChoice != "pari" && tmpChoice != "dispari") {
+    tmpChoice = prompt("Scegli tra pari o dispari!").trim().toLocaleLowerCase();
+  }
+  return tmpChoice;
 }
 
-let userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
-//ciclo per un numero compreso da 1 a 5
-while (userNumber < 1 || userNumber > 5 || isNaN(userNumber)) {
-  userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
+function numberOneToFive() {
+  let userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
+  //ciclo per un numero compreso da 1 a 5
+  while (userNumber < 1 || userNumber > 5 || isNaN(userNumber)) {
+    userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
+  }
+  return userNumber;
 }
+
+function randomNumber(min, max) {
+  const tmpNumb = Math.floor(Math.random() * (max - min + 1) + min);
+  return tmpNumb;
+}
+
+// MAIN
+// const userChoice = pariOdispari();
+// const uNumber = numberOneToFive();
+
+const pcNumber = randomNumber(1, 5);
+console.log(pcNumber);
