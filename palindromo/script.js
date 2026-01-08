@@ -10,19 +10,27 @@ function verifyPal(uWord) {
   //   return tmpW === uWord;
 
   //secondo approccio
+  //   const tmpW = [];
+  //   for (let i = 0; i < uWord.length; i++) {
+  //     tmpW[i] = uWord[uWord.length - (i + 1)];
+  //   }
+  //   return uWord == tmpW.join("");
 
-  let tmpW = [];
-  for (let i = 0; i < uWord.length; i++) {
-    tmpW[i] = uWord[uWord.length - (i + 1)];
+  //un altro approccio
+
+  const lenW = uWord.trim().length / 2;
+  for (let i = 0; i < lenW; i++) {
+    if (uWord[i] != uWord[uWord.length - (i + 1)]) {
+      return false;
+    }
   }
-
-  return uWord == tmpW.join("");
+  return true;
 }
 
 const userWord = "AnnA" || prompt("Inserisci la parola da verificare!").trim();
 const verifyUserWord = verifyPal(userWord);
 
-let message = verifyUserWord
+const message = verifyUserWord
   ? "La parola inserita è palindroma!"
   : "La parola inserita NON è palindroma!";
 
