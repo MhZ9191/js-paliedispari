@@ -44,9 +44,8 @@ function verifyPal(uWord, buf, i) {
   }
 }
 
-const buf = "";
 const userWord = "AnnA" || prompt("Inserisci la parola da verificare!").trim();
-const verifyUserWord = verifyPal(userWord, buf, userWord.length - 1);
+const verifyUserWord = verifyPal(userWord, "", userWord.length - 1);
 
 const message = verifyUserWord
   ? "La parola inserita è palindroma!"
