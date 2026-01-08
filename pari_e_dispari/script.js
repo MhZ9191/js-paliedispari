@@ -32,9 +32,23 @@ function randomNumber(min, max) {
   return tmpNumb;
 }
 
+function evalCal(numb) {
+  return numb % 2 === 0;
+}
+
 // MAIN
-// const userChoice = pariOdispari();
-// const uNumber = numberOneToFive();
+const userChoice = pariOdispari();
+const uNumber = numberOneToFive();
 
 const pcNumber = randomNumber(1, 5);
-console.log(pcNumber);
+
+const winnerCondition = evalCal(uNumber + pcNumber);
+
+const message =
+  (winnerCondition && userChoice === "pari") ||
+  (!winnerCondition && userChoice === "dispari")
+    ? "Hai vinto!"
+    : "Ha vinto il pc";
+
+console.log(uNumber + pcNumber);
+console.log(message);
